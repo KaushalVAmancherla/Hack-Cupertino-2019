@@ -1,0 +1,137 @@
+Skip to content
+ 
+Search or jump to…
+
+Pull requests
+Issues
+Marketplace
+Explore
+ 
+@chessking1000 
+0
+0 0 KaushalVAmancherla/Hackathon2019 Private
+ Code  Issues 0  Pull requests 0  Projects 0  Insights
+Hackathon2019
+/
+Name your file…
+or cancel
+  
+1
+<?xml version="1.0" encoding="utf-8"?>
+2
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+3
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+4
+    xmlns:tools="http://schemas.android.com/tools"
+5
+    android:layout_width="match_parent"
+6
+    android:layout_height="match_parent"
+7
+    tools:context=".MainActivity">
+8
+​
+9
+    <TextView
+10
+        android:id="@+id/textView2"
+11
+        android:layout_width="337dp"
+12
+        android:layout_height="69dp"
+13
+        android:layout_marginStart="8dp"
+14
+        android:layout_marginLeft="8dp"
+15
+        android:layout_marginTop="40dp"
+16
+        android:layout_marginEnd="8dp"
+17
+        android:layout_marginRight="8dp"
+18
+        android:layout_marginBottom="8dp"
+19
+        android:cursorVisible="false"
+20
+        android:textSize="30sp"
+21
+        android:visibility="visible"
+22
+        app:layout_constraintBottom_toBottomOf="parent"
+23
+        app:layout_constraintEnd_toEndOf="parent"
+24
+        app:layout_constraintHorizontal_bias="0.724"
+25
+        app:layout_constraintStart_toStartOf="parent"
+26
+        app:layout_constraintTop_toTopOf="parent"
+27
+        app:layout_constraintVertical_bias="0.01999998" />
+28
+​
+29
+    <Button
+30
+        android:id="@+id/button2"
+31
+        android:layout_width="89dp"
+32
+        android:layout_height="54dp"
+33
+        android:layout_marginStart="8dp"
+34
+        android:layout_marginLeft="8dp"
+35
+        android:layout_marginTop="8dp"
+36
+        android:layout_marginEnd="8dp"
+37
+        android:layout_marginRight="8dp"
+38
+        android:layout_marginBottom="8dp"
+39
+        android:onClick="button2"
+40
+        android:text="2"
+41
+        app:layout_constraintBottom_toBottomOf="parent"
+42
+        app:layout_constraintEnd_toEndOf="parent"
+43
+        app:layout_constraintHorizontal_bias="0.525"
+44
+        app:layout_constraintStart_toStartOf="parent"
+45
+        app:layout_constraintTop_toTopOf="parent"
+46
+        app:layout_constraintVertical_bias="0.22000003" />
+47
+​
+48
+    <Button
+49
+        android:id="@+id/button3"
+@chessking1000
+Commit new file
+Commit summary 
+Create new file
+Optional extended description
+Add an optional extended description…
+  Commit directly to the master branch.
+  Create a new branch for this commit and start a pull request. Learn more about pull requests.
+ 
+© 2019 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Help
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
