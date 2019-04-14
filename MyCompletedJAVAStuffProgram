@@ -1,0 +1,177 @@
+package com.example.thisisgonnawork;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+
+import java.util.Random;
+
+
+public class MainActivity extends AppCompatActivity {
+
+    int numCorrect = 0;
+    int numIncorrect = 0;
+
+    String[] myStringArray = {"Pour vodka over a sticker to help un-stick it from something", "Have a migrain? Put your hands in ice water and flex them several times. Headache gone!", "If you're coughing uncontrollably, raise your hands above your head and it will stop!","Keep your unused batteries in the refrigerator. They’ll last longer that way!","If you want good running form, try to run as quietly as possible. You'll be able to run faster and longer.","Fill an old ketchup bottle with pancake batter to pour perfect flapjacks every time!","If you really like one song from an artist, but not the rest, try and find out who produced that song. The producer usually has a big part in how the final song sounds.","Throw a cup of water into the microwave when you heat up day-old pizza. It will make the crust crisper!","If you get stung by a jellyfish, pee on the wound for quick relief.","Cottage Cheese and sour cream will last twice as long if you turn the container upside down. This forms a vacuum and prevents bacteria.","If you and your car happen to be sinking in water, don't touch that car door.","The slot on your pot handle doubles as a holder for your cooking spoon!","When you first sit down on your flight, count how many rows separate you from the nearest exit.","If a projectile or other object (knife) has been lodged into your body, don't even think about removing it.","Boost the volume on your keyboard speakers with a plastic cup cut in half!"};
+    boolean[] answers = {false,true,true,false,true, false,true,false,false,true, true, false,true,true,false};
+    String[] printAnswersIncorrect = {"Sorry, you didn't get it correct. Click the gray button at the top to continue.","Try again, it's not the right answer. Click the gray button at the top to continue.", "Sorry, you didn't get it correct. Click the gray button at the top to continue.","Try again, it's not the right answer. Click the gray button at the top to continue.","Sorry, you didn't get it correct. Click the gray button at the top to continue.","Try again, you didn't get it correct. Click the gray button at the top to continue.","Sorry, it's the incorrect answer. Click the gray button at the top to continue.","Sorry, you didn't get it correct. Click the gray button at the top to continue.","No, the answer is incorrect. Click the gray button at the top to continue.","Sorry, you didn't get it correct. Click the gray button at the top to continue.","Try again, you didn't get it right. Click the gray button at the top to continue.","It's not correct, unfortunately. Click the gray button at the top to continue.","Try again, you didn't get it correct. Click the gray button at the top to continue.","Sorry, you didn't get it correct. Click the gray button at the top to continue.","Sorry, you didn't get it correct. Click the gray button at the top to continue.","Try again, you didn't get it correct. Click the gray button at the top to continue."};
+    boolean answer;
+    boolean isClicked;
+    boolean radioBool;
+    boolean radioClicked;
+    boolean shuffleClicked;
+    boolean shuffleBool;
+    boolean hideText;
+
+    int myStringArrayCounter = 0;
+    int answersCounter = 0;
+    int finalScore = 0;
+
+    int correctCount = 0;
+    int incorrectCount = 0;
+    int change = 0;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
+
+    public void checkClick(View view) {
+        Random r = new Random();
+        isClicked = true;
+        TextView textView3 = findViewById(R.id.textView3);
+        TextView textView2 = findViewById(R.id.textView2);
+        TextView textView8 = findViewById(R.id.textView8);
+        TextView correct = findViewById(R.id.textView6);
+        TextView incorrect = findViewById(R.id.textView7);
+        Button restart = findViewById(R.id.button7);
+        Button question = findViewById(R.id.button4);
+
+        String C = "";
+        String I = "";
+        String F = "";
+
+        answer = answers[answersCounter];
+
+        change = (int)r.nextInt(2)+1;
+        if(shuffleBool) {
+            if(radioBool == answer)
+            {
+                if(change==2) {
+                    textView3.setText("Great job! You got the correct answer! Now click the gray button at the top to continue.");
+                }else if(change==1){
+                    textView3.setText("Good job, the answer you chose is correct! Now click the gray button at the top to continue.");
+                }
+                numCorrect++;
+            }else{
+                textView3.setText(printAnswersIncorrect[answersCounter] + "");
+                numIncorrect++;
+            }
+
+            F = numCorrect + "/15";
+
+            if (answersCounter == 14) {
+                textView8.setText("Your final score was " + F);
+                //answersCounter = 0;
+                restart.setVisibility(View.VISIBLE); //To set visible
+                question.setVisibility(View.GONE);
+                textView2.setText("");
+                textView3.setText("");
+
+            } else {
+                answersCounter++;
+                correctCount++;
+                incorrectCount++;
+            }
+
+        }
+
+            if(answersCounter>0 && answersCounter<14)
+            {
+                question.setText("Click for the Next Question");
+            }
+
+            C = String.valueOf(numCorrect);
+            I = String.valueOf(numIncorrect);
+
+            correct.setText("Number correct = " + C);
+            incorrect.setText("Number incorrect  = " + I);
+
+        shuffleBool = false;
+
+
+    }
+
+
+        public void shuffleClicked (View view){
+            TextView textView2 = findViewById(R.id.textView2);
+            TextView textView3 = findViewById(R.id.textView3);
+            textView3.setText("");
+
+            textView2.setText(myStringArray[0]);
+
+            //if(isClicked && radioClicked && myStringArrayCounter>0) {
+
+                shuffleBool = true;
+                hideText = true;
+
+                String question = myStringArray[myStringArrayCounter];
+
+                textView2.setText(question);
+
+
+                if (myStringArrayCounter == 14) {
+                    myStringArrayCounter = 0;
+                } else {
+                    myStringArrayCounter++;
+                }
+                radioClicked = false;
+                isClicked = false;
+            //}
+    }
+
+
+
+
+    public void radioClickedTrue(View view) {
+        radioBool = true;
+        radioClicked = true;
+    }
+
+    public void radioClickedFalse(View view) {
+        radioBool = false;
+        radioClicked = true;
+    }
+
+    public void restartClicked(View view)
+    {
+        TextView textView3 = findViewById(R.id.textView3);
+        TextView textView2 = findViewById(R.id.textView2);
+        TextView textView8 = findViewById(R.id.textView8);
+        TextView correct = findViewById(R.id.textView6);
+        TextView incorrect = findViewById(R.id.textView7);
+        Button question = findViewById(R.id.button4);
+        Button restart = findViewById(R.id.button7);
+
+        question.setVisibility(View.VISIBLE);
+        question.setText("Click for the First Question");
+        restart.setVisibility(View.GONE);
+
+        textView3.setText("");
+        textView2.setText("");
+        textView8.setText("");
+        correct.setText("Number correct = ");
+        incorrect.setText("Number incorrect = ");
+
+        answersCounter = 0;
+        myStringArrayCounter = 0;
+        finalScore = 0;
+        numIncorrect = 0;
+        numCorrect = 0;
+        correctCount = 0;
+        incorrectCount = 0;
+    }
+}
